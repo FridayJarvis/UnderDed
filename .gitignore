@@ -1,0 +1,18 @@
+# IDE
+.idea/
+
+# Build directories
+cmake-build-*/
+build/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Executables
+*.exe
+
+# Dependencies (optional)
+_deps/
