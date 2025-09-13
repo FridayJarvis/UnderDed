@@ -7,6 +7,15 @@
 
 
 class Item {
+protected:
+  int price;
+
+public:
+  Item(int price);
+
+  int getPrice();
+
+  virtual ~Item();
 };
 
 

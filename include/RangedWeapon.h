@@ -8,6 +8,9 @@
 
 
 class RangedWeapon : Weapon {
+public:
+  RangedWeapon(int price, int damage);
+  bool attack() override;
 };
 
 

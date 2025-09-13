@@ -4,11 +4,23 @@
 
 #ifndef UNDERDED_WEAPON_H
 #define UNDERDED_WEAPON_H
+#include "Enemy.h"
 #include "Item.h"
 
 
-class Weapon : Item{
+class Weapon : protected Item{
+protected:
   int damage;
+
+public:
+  Weapon(int price, int damage);
+
+  virtual int getDamage();
+  virtual void setDamage(int damage);
+
+  virtual bool attack() = 0;
+
+  virtual ~Weapon() = default;
 };
 
 

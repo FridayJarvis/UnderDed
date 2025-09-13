@@ -8,7 +8,12 @@
 
 
 class Shield : Item {
+protected:
   int durability;
+
+public:
+  Shield(int price, int durability);
+
 };
 
 
