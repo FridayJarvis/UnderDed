@@ -4,6 +4,9 @@
 
 #ifndef UNDERDED_PLAYER_H
 #define UNDERDED_PLAYER_H
+#include "Coord.h"
+#include "Inventory.h"
+#include "Weapon.h"
 
 
 class Player {

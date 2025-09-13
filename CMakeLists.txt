@@ -25,6 +25,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Coord.cpp
         include/Coord.h
         src/Player.cpp
+        src/SaveLoadManager.cpp
+        include/SaveLoadManager.h
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
