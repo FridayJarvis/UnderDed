@@ -1,7 +1,3 @@
-//
-// Created by Edwin_Jarvis on 13.09.2025.
-//
-
 #ifndef UNDERDED_ENEMY_H
 #define UNDERDED_ENEMY_H
 #include <utility>
