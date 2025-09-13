@@ -1,7 +1,9 @@
-#include "../include/Weapon.h"
+#include "Weapon.h"
 
-Weapon::Weapon(int price, int damage)
-  : Item(price), damage(damage) {
+class Item;
+
+Weapon::Weapon(int price, int damage):
+::Item(price), damage(damage) {
 }
 
 int Weapon::getDamage() {

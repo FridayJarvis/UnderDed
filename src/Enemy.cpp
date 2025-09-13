@@ -1,16 +1,24 @@
-#include "../include/Enemy.h"
+
+
+#include "Enemy.h"
 
 #include <cmath>
+#include <utility>
 
-Enemy::Enemy(Coord& pos, std::pair<int, int>& rangeOfX,std::pair<int, int> &rangeOfY,
-             int damage, int health, int speed, int rangeOfVisibility, bool playerDetected)
-  : pos(pos), rangeOfX(rangeOfX), rangeOfY(rangeOfY) {
+Enemy::Enemy(Coord& pos, std::pair<int, int>& rangeOfX, std::pair<int, int>& rangeOfY,
+  int damage, int health, int speed, int rangeOfVisibility, bool playerDetected)
+: pos(pos), rangeOfX(rangeOfX), rangeOfY(rangeOfY) {
   this->damage = damage;
   this->health = health;
   this->speed = speed;
   this->rangeOfVisibility = rangeOfVisibility;
   this->playerDetected = playerDetected;
 }
+
+Enemy::Enemy(Coord&& pos, std::pair<int, int>&& rangeOfX,
+  std::pair<int, int>&& rangeOfY, int damage, int health, int speed,
+  int rangeOfVisibility, bool playerDetected)
+  : pos(), damage(0), health(0), speed(0), rangeOfVisibility(0), playerDetected(false) {}
 
 bool Enemy::attack() {
   return true;

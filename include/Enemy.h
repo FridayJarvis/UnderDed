@@ -3,7 +3,6 @@
 #include <utility>
 
 #include "Coord.h"
-#include "Player.h"
 
 
 class Enemy {
@@ -21,6 +20,9 @@ class Enemy {
 
 public:
   Enemy(Coord& pos, std::pair<int, int>& rangeOfX, std::pair<int, int>& rangeOfY,
+    int damage, int health, int speed, int rangeOfVisibility, bool playerDetected);
+
+  Enemy(Coord&& pos, std::pair<int, int>&& rangeOfX, std::pair<int, int>&& rangeOfY,
     int damage, int health, int speed, int rangeOfVisibility, bool playerDetected);
 
 bool attack();

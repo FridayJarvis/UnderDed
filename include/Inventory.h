@@ -23,6 +23,7 @@ public:
   void setBulletAmount(int bulletAmount);
   void setAidKitAmount(int aidKitAmount);
   void setMoney(int money);
+  void setItem(Item& item);
 
 };
 

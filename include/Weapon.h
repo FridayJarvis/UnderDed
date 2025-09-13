@@ -1,5 +1,7 @@
 #ifndef UNDERDED_WEAPON_H
 #define UNDERDED_WEAPON_H
+#include <vector>
+
 #include "Enemy.h"
 #include "Item.h"
 
@@ -14,7 +16,7 @@ public:
   virtual int getDamage();
   virtual void setDamage(int damage);
 
-  virtual bool attack() = 0;
+  virtual bool attack(std::vector<Enemy>& enemies) = 0;
 
   virtual ~Weapon() = default;
 };

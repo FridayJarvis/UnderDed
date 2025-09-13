@@ -22,7 +22,6 @@ add_executable(${PROJECT_NAME} src/main.cpp
         include/Shop.h
         src/InputHandler.cpp
         include/InputHandler.h
-        src/Coord.cpp
         include/Coord.h
         src/Player.cpp
         include/Enemy.h

@@ -8,10 +8,10 @@ protected:
 
 public:
   Item(int price);
-
-  int getPrice();
-
   virtual ~Item();
+
+  virtual int getPrice();
+
 };
 
 

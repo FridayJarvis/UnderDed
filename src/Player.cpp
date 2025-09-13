@@ -1,17 +1,19 @@
-#include "../include/Player.h"
 
+
+#include "Player.h"
+#include "Weapon.h"
 #include "GameManager.h"
 
-Player::Player(Coord& position, Inventory& inventory, std::unique_ptr<Weapon> currentWeapon, int health, int speed)
-  : position(position), inventory(inventory), currentWeapon(std::move(currentWeapon)) {
+class GameManager;
+
+Player::Player(Coord& pos, Inventory& inventory, std::unique_ptr<Weapon> currentWeapon, int health, int speed)
+  : pos(pos), inventory(inventory), currentWeapon(std::move(currentWeapon)) {
   this->health = health;
   this->speed = speed;
 }
 
-bool Player::attack(Weapon &weapon) {
-  weapon.attack([](GameManager& gm) {
-    return gm.getEnemies();
-  });
+bool Player::attack(std::unique_ptr<Weapon> weapon, std::vector<Enemy>& enemies) {
+  weapon->attack(enemies);
   return true;
 }
 
@@ -19,7 +21,9 @@ bool Player::useShield(Shield &shield) {
   return true;
 }
 
-void Player::move(Coord &delta) {
+void Player::move(Coord&& delta) {
+  pos.x += delta.x;
+  pos.y += delta.y;
 }
 
 void Player::loseHealth(int damage) {
@@ -42,7 +46,7 @@ int Player::getHealth() {
 }
 
 Coord& Player::getPosition() {
-  return position;
+  return pos;
 }
 
 int Player::getSpeed() {
@@ -61,13 +65,13 @@ void Player::setHealth(int health) {
   this->health = health;
 }
 
-void Player::setPosition(Coord& position) {
-  this->position = position;
+void Player::setPosition(Coord& pos) {
+  this->pos = pos;
 }
 
 void Player::setPosition(int x, int y) {
-  this->position.x = x;
-  this->position.y = y;
+  this->pos.x = x;
+  this->pos.y = y;
 }
 
 void Player::setSpeed(int speed) {

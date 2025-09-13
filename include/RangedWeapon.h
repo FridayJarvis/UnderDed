@@ -6,7 +6,7 @@
 class RangedWeapon : Weapon {
 public:
   RangedWeapon(int price, int damage);
-  bool attack() override;
+  bool attack(std::vector<Enemy>& enemies) override;
 };
 
 
