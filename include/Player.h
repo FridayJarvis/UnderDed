@@ -17,8 +17,7 @@ class Player {
 
   Inventory inventory;
   Weapon currentWeapon;
-
-
+  
 };
 
 
