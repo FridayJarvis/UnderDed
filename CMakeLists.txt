@@ -25,6 +25,16 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/Coord.cpp
         include/Coord.h
         src/Player.cpp
+        include/Enemy.h
+        include/MeleeWeapon.h
+        include/Shield.h
+        include/RangedWeapon.h
+        src/Shield.cpp
+        src/RangedWeapon.cpp
+        src/MeleeWeapon.cpp
+        src/Item.cpp
+        src/Enemy.cpp
+        src/Weapon.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)

@@ -3,6 +3,8 @@
 #include <vector>
 
 
+class Item;
+
 class Inventory {
   int money;
   int bulletAmount;

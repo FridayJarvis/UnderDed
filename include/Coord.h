@@ -3,11 +3,11 @@
 
 
 
-class Coord {
+struct Coord {
   int x;
   int y;
 };
 
 
 
-#endif //COORD_H
+#endif
