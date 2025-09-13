@@ -23,7 +23,9 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/InputHandler.cpp
         include/InputHandler.h
         src/Coord.cpp
-        include/Coord.h)
+        include/Coord.h
+        src/Player.cpp
+)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
