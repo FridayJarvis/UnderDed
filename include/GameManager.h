@@ -11,14 +11,35 @@
 
 
 class GameManager {
-  std::unique_ptr<Player> player;
-  std::unique_ptr<InputHandler> inputHandler;
-  std::unique_ptr<SaveLoadManager> saveLoadManager;
+  Player player;
+  InputHandler inputHandler;
+  SaveLoadManager saveLoadManager;
 
-  std::vector<std::unique_ptr<Shop>> shops;
+  std::vector<Shop> shops;
 
   std::vector<std::string> map;
   std::vector<Enemy> enemies;
+
+  bool initialize();
+  void update();
+  void render();
+
+  void loadResources();
+  void setUpInputHandler();
+  void processCollisions();
+  void checkWinConditions();
+
+public:
+  GameManager(Player& player, InputHandler& inputHandler, SaveLoadManager& saveLoadManager, std::vector<Shop>& shops, std::vector<std::string>& map, std::vector<Enemy>& enemies);
+
+  void run();
+
+  std::vector<std::string>& getMap() ;
+  Player& getPlayer();
+  std::vector<Enemy> getEnemies();
+
+  void setPlayer(const Player& player);
+  void setEnemies(const std::vector<Enemy>& enemies);
 };
 
 
