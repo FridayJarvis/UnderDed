@@ -6,12 +6,13 @@
 #include "Enemy.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "SaveLoadManager.h"
 #include "Shop.h"
 
 
 class GameManager {
   std::unique_ptr<Player> player;
-  std::unique_ptr<InputHandler> inputPlayer;
+  std::unique_ptr<InputHandler> inputHandler;
   std::unique_ptr<SaveLoadManager> saveLoadManager;
 
   std::vector<std::unique_ptr<Shop>> shops;
