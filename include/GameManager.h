@@ -1,11 +1,8 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
-#include <memory>
-#include <vector>
-
+#include "Player.h"
 #include "Enemy.h"
 #include "InputHandler.h"
-#include "Player.h"
 #include "SaveLoadManager.h"
 #include "Shop.h"
 
@@ -30,18 +27,20 @@ class GameManager {
   void checkWinConditions();
 
 public:
-  GameManager(Player& player, InputHandler& inputHandler, SaveLoadManager& saveLoadManager, std::vector<Shop>& shops, std::vector<std::string>& map, std::vector<Enemy>& enemies);
+  GameManager(Player player, InputHandler& inputHandler,
+              SaveLoadManager& saveLoadManager, std::vector<Shop>& shops,
+              std::vector<std::string>& map, std::vector<Enemy>& enemies);
 
   void run();
 
   std::vector<std::string>& getMap() ;
   Player& getPlayer();
-  std::vector<Enemy> getEnemies();
+  std::vector<Enemy>& getEnemies();
 
-  void setPlayer(const Player& player);
-  void setEnemies(const std::vector<Enemy>& enemies);
+  void setPlayer(Player& player);
+  void setEnemies(std::vector<Enemy>& enemies);
 };
 
 
 
-#endif //GAMEMANAGER_H
+#endif

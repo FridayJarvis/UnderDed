@@ -4,7 +4,8 @@
 #include <functional>
 #include <map>
 
-#include "GameManager.h"
+
+class GameManager;
 
 class InputHandler {
 public:
@@ -19,10 +20,10 @@ public:
   void clearBindings();
   void processInput(GameManager& gameManager);
 
-  bool isKeyPressed(int keyCode) const;
+  bool isKeyPressed(int keyCode);
 
 private:
-  std::map<int, Command> key_bindings;
+  std::map<int, Command> keyBindings;
 
   std::vector<int> pressedKeys;
 };

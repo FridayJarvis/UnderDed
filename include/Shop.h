@@ -7,7 +7,7 @@ class Shop {
   Coord pos;
 
 public:
-  Shop(Coord pos);
+  Shop(Coord& pos);
 
   bool Buy(Player& player);
   bool Sell(Player& player);
