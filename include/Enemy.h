@@ -2,6 +2,8 @@
 #define UNDERDED_ENEMY_H
 #include <utility>
 
+#include "Coord.h"
+
 
 class Enemy {
   Coord position;
