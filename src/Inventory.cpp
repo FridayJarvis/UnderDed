@@ -1,40 +1,29 @@
-
-
 #include "Inventory.h"
+#include "Player.h"
+#include <algorithm>
 
-Inventory::Inventory(int money, int bulletAmount, int aidKitAmount, std::vector<Item>& items) : items(items) {
-  this->money = money;
-  this->bulletAmount = bulletAmount;
-  this->aidKitAmount = aidKitAmount;
+bool Inventory::tryBuy(int price) {
+  if (price < 0) return false;
+  if (money_ < price) return false;
+  money_ -= price;
+  return true;
 }
 
-void Inventory::add(Item& item) {
+bool Inventory::spendBullet() {
+  if (bullets_ <= 0) return false;
+  --bullets_;
+  return true;
 }
 
-void Inventory::clear(Item& item) {
+bool Inventory::useMedkit(Player& player) {
+  if (aidkits_ <= 0) return false;
+  --aidkits_;
+  player.setHealth(std::min(10, player.getHealth() + 5));
+  return true;
 }
 
-int Inventory::getBulletAmount() {
-  return 0;
-}
-
-int Inventory::getAidKitAmount() {
-  return 0;
-}
-
-int Inventory::getMoney() {
-  return 0;
-}
-
-void Inventory::setBulletAmount(int bulletAmount) {
-}
-
-void Inventory::setAidKitAmount(int aidKitAmount) {
-}
-
-void Inventory::setMoney(int money) {
-}
-
-void Inventory::setItem(Item& item) {
-  items.push_back(item);
+bool Inventory::useShieldOnce() {
+  if (shield_charges_ <= 0) return false;
+  --shield_charges_;
+  return true;
 }

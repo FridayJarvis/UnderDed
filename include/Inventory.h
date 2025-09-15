@@ -1,32 +1,37 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
-#include <vector>
-#include "Item.h"
+
+class Player; // forward
 
 class Inventory {
-  int money;
-  int bulletAmount;
-  int aidKitAmount;
-
-  std::vector<Item> items;
-
 public:
-  Inventory(int money, int bulletAmount, int aidKitAmount, std::vector<Item>& items);
+  Inventory(int money = 0, int bullets = 0, int aidkits = 0)
+      : money_(money), bullets_(bullets), aidkits_(aidkits) {}
 
-  void add(Item& item);
-  void clear(Item& item);
+  int getMoney() const { return money_; }
+  void setMoney(int m) { money_ = m; }
+  bool tryBuy(int price);
 
-  int getBulletAmount();
-  int getAidKitAmount();
-  int getMoney();
+  int getBulletAmount() const { return bullets_; }
+  void setBulletAmount(int v) { bullets_ = v; }
+  void addBullets(int v) { bullets_ += v; if (bullets_ < 0) bullets_ = 0; }
+  bool spendBullet();
 
-  void setBulletAmount(int bulletAmount);
-  void setAidKitAmount(int aidKitAmount);
-  void setMoney(int money);
-  void setItem(Item& item);
+  int getAidKitAmount() const { return aidkits_; }
+  void setAidKitAmount(int v) { aidkits_ = v; }
+  void addAidKits(int v) { aidkits_ += v; if (aidkits_ < 0) aidkits_ = 0; }
+  bool useMedkit(Player& player);
 
+  int  getShieldCharges() const { return shield_charges_; }
+  void setShieldCharges(int v) { shield_charges_ = v; if (shield_charges_ < 0) shield_charges_ = 0; }
+  void addShield(int v) { shield_charges_ += v; if (shield_charges_ < 0) shield_charges_ = 0; }
+  bool useShieldOnce();
+
+private:
+  int money_ = 0;
+  int bullets_ = 0;
+  int aidkits_ = 0;
+  int shield_charges_ = 0;
 };
 
-
-
-#endif //INVENTORY_H
+#endif

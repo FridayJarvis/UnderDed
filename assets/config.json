@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "player": {
+    "x": 5,
+    "y": 10,
+    "hp": 100,
+    "inventory": {
+      "money": 50,
+      "bullets": 12,
+      "medkits": 2,
+      "shield": 3
+    },
+    "weapon_slot": 1
+  },
+    },
+  "enemies": [
+    {
+      "x": 3,
+      "y": 7,
+      "hp": 2,
+      "dmg": 1
+    },
+    {
+      "x": 8,
+      "y": 2,
+      "hp": 3,
+      "dmg": 2
+    },
+    {
+      "x": 15,
+      "y": 5,
+      "hp": 5,
+      "dmg": 3
+    }
+  ]
+}

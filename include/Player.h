@@ -1,68 +1,38 @@
-
 #ifndef UNDERDED_PLAYER_H
 #define UNDERDED_PLAYER_H
-#include <memory>
 
 #include "Coord.h"
 #include "Inventory.h"
-#include "Shield.h"
-#include "Weapon.h"
-class Enemy;
+#include <memory>
+
 class Weapon;
 
 class Player {
-  Coord pos;
+public:
+  Player() = default;
 
-  int health;
-  int speed;
+  Coord& getPosition() { return position; }
+  void setPosition(Coord& pos) { position = pos; }
+  void setPosition(int x, int y) { position.x = x; position.y = y; }
+
+  int getHealth()  { return health; }
+  void setHealth(int h) { health = h; if (health < 0) health = 0; if (health > 10) health = 10; }
+  void loseHealth(int dmg) { if (dmg > 0) setHealth(health - dmg); }
+
+  Inventory& getInventory() { return inventory; }
+
+  int  getCurrentWeaponSlot()  { return currentWeaponSlot; }
+  void setCurrentWeaponSlot(int slot);
+  void unlockWeaponSlot(int slot);
+
+private:
+  Coord position{0,0};
+  int health = 10;
 
   Inventory inventory;
-  std::unique_ptr<Weapon> currentWeapon;
 
-public:
-  Player(Coord& pos, Inventory& inventory, std::unique_ptr<Weapon> currentWeapon, int health, int speed);
-
-  bool attack(std::unique_ptr<Weapon> weapon, std::vector<Enemy>& enemies);
-
-  bool useShield(Shield &shield);
-
-void move(Coord&& delta);
-
-void loseHealth(int damage);
-
-void changeWeapon(std::unique_ptr<Weapon> weapon);
-
-bool addItem(Item &item);
-
-bool removeItem(Item &item);
-
-int getHealth();
-
-Coord& getPosition();
-
-int getSpeed();
-
-Inventory& getInventory();
-
-std::unique_ptr<Weapon> getCurrentWeapon();
-
-void setHealth(int health);
-
-void setPosition(Coord& pos);
-
-void setPosition(int x, int y);
-
-void setSpeed(int speed);
-
-void setBulletAmount(int bulletAmount);
-
-void setAidKitAmount(int aidKitAmount);
-
-void setItem(Item& item);
-
-void setCurrentWeapon(Weapon& currentWeapon);
-
+  int currentWeaponSlot = 1; // 1..3
+  bool owned[4] = {false, true, false, false}; // fists=true
 };
 
-
-#endif //UNDERDED_PLAYER_H
+#endif
