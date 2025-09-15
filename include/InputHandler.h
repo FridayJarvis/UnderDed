@@ -4,29 +4,27 @@
 #include <functional>
 #include <map>
 
-
 class GameManager;
 
 class InputHandler {
 public:
   using Command = std::function<void(GameManager&)>;
 
-  void initialize();
-
   InputHandler();
 
   void handleInput();
-  void bindKey(int key, Command command);
+  void bindKey(int key, Command cmd);
   void clearBindings();
-  void processInput(GameManager& gameManager);
+  void processInput(GameManager& gm);
 
-  bool isKeyPressed(int keyCode);
+  bool isKeyPressed(int keyCode) const;
+
+private:
+  int readKey();
+  static int normalize(int k);
 
 private:
   std::map<int, Command> keyBindings;
-
-  std::vector<int> pressedKeys;
 };
 
-
-#endif //INPUTHANDLER_H
+#endif
